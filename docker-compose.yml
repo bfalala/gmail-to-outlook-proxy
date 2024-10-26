@@ -7,8 +7,7 @@ services:
       - "3000:3000"  # Web app
       - "587:587"    # SMTP
     environment:
-      - NODE_ENV=production
-      - PORT=3000
+      - PORT=3000    # Internal for Next.js compilation
     volumes:
       - ./data:/app/data
       - ./certificates:/app/certificates
