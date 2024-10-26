@@ -1,0 +1,5 @@
+data/
+certificates/
+.next/
+build/
+node_modules/

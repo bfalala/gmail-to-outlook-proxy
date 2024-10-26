@@ -1,0 +1,17 @@
+{
+  "apps": [
+    {
+      "name": "sendas-smtp",
+      "script": "build/smtp",
+      "instances": 1,
+      "exec_mode": "fork"
+    },
+    {
+      "name": "sendas-app",
+      "script": "npm",
+      "args": "run app:start",
+      "instances": 1,
+      "exec_mode": "fork"
+    }
+  ]
+}
