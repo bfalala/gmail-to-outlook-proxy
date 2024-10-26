@@ -42,3 +42,5 @@ next-env.d.ts
 # misc
 data/*
 !data/.gitkeep
+certificates/*
+!certificates/.gitkeep

@@ -21,6 +21,29 @@ I've stood up https://sendas.email/ for myself, but all are welcome to use it if
 5. Generate your own `SESSION_SECRET` to manage session encryption.
 6. `docker-compose up`
 
+## Certificates (Route53)
+
+Reference: https://certbot-dns-route53.readthedocs.io/en/stable/
+
+```
+docker run --rm -v \
+  "$(pwd)/certificates:/etc/letsencrypt/" \
+  -e "AWS_ACCESS_KEY_ID=<YOUR_KEY_ID>" \
+  -e "AWS_SECRET_ACCESS_KEY=<YOUR_SECRET_KEY" \
+  certbot/dns-route53 \
+  certonly \
+  --non-interactive \
+  --agree-tos \
+  --email <YOUR_EMAIL> \
+  --dns-route53 \
+  -d <YOUR_SMTP_HOST>
+```
+
+Then update:
+
+- `SMTP_KEY_FILE`: `certificates/live/<YOUR_SMTP_HOST>/privkey.pem`
+- `SMTP_CERT_FILE`: `certificates/live/<YOUR_SMTP_HOST>/fullchain.pem`
+
 ## Usage
 
 Usage is pretty straightforward, visit the web app (http://localhost:3000 by default) and authenticate into your Outlook.com account. You'll then be presented with SMTP credentials to use with Gmail.
