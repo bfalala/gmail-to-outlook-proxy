@@ -52,7 +52,7 @@ export default function Home() {
                   target="_blank"
                 >
                   <Github fill="white" size={16} />
-                  Github
+                  Github (For Self-Hosting)
                 </a>
               </p>
               <p className="text-gray-600 leading-relaxed mt-4">
