@@ -1,11 +1,4 @@
-import {
-  ArrowRight,
-  AlertCircle,
-  Server,
-  Github,
-  GithubIcon,
-  LucideGithub,
-} from "lucide-react";
+import { ArrowRight, AlertCircle, Server, Github } from "lucide-react";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import Image from "next/image";
