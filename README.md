@@ -9,7 +9,9 @@ Authentication failed. Please check your username/password.
 Server returned error: "334 VXNlcm5hbWU6 334 UGFzc3dvcmQ6 535 5.7.139 Authentication unsuccessful, basic authentication is disabled. [AS4P251CA0014.EURP251.PROD.OUTLOOK.COM 2024-10-26T21:19:04.955Z 08DCF55F2D078725] , code: 535"
 ```
 
-This restores that functionality by presenting a compatible SMTP server to Gmail and using the Microsoft Graph `sendMail` endpoint to send the payload.
+This restores that functionality by presenting a compatible SMTP server to Gmail and using the Microsoft Graph `sendMail` endpoint to send the payload. Once authenticated, displays the SMTP credentials to use in Gmail (instead of the ones listed at https://support.microsoft.com/en-us/office/pop-imap-and-smtp-settings-for-outlook-com-d088b986-291d-42b8-9564-9c414e2aa040):
+
+![image](https://github.com/user-attachments/assets/1fb0492b-44fa-4b5e-84e8-cdb80b442c1f)
 
 I've stood up https://sendas.email/ for myself, but all are welcome to use it if you don't want to go through the setup. The only permission that is requested is `Mail.Send`, which doesn't allow access to your contacts or inbox.
 
