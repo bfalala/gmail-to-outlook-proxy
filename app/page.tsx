@@ -29,9 +29,10 @@ export default function Home() {
               <p className="text-red-600 leading-relaxed">
                 <code>
                   Authentication failed. Please check your username/password.
-                  Server returned an error: 334 VXNlcm5hbWU6 334 UGFzc3dvcmQ6
-                  535 5.7.139 Authentication unsuccessful, basic authentication
-                  is disabled.
+                  Server returned error: "334 VXNlcm5hbWU6 334 UGFzc3dvcmQ6 535
+                  5.7.139 Authentication unsuccessful, basic authentication is
+                  disabled. [AS4P251CA0014.EURP251.PROD.OUTLOOK.COM
+                  2024-10-26T21:19:04.955Z 08DCF55F2D078725] , code: 535"
                 </code>
               </p>
             </div>

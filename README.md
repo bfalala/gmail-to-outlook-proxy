@@ -5,7 +5,8 @@ https://sendas.email/
 Microsoft has discontinued basic authentication for personal Outlook.com accounts. This change affects Gmail's "Send As" feature, which relies on basic SMTP authentication. Since Gmail hasn't updated their SMTP integration, users can no longer send emails through Outlook.com accounts via Gmail. Notably, attempts to connect to the Outlook.com SMTP server smtp-mail.outlook.com results in the following error:
 
 ```
-Authentication failed. Please check your username/password. Server returned an error: 334 VXNlcm5hbWU6 334 UGFzc3dvcmQ6 535 5.7.139 Authentication unsuccessful, basic authentication is disabled.
+Authentication failed. Please check your username/password.
+Server returned error: "334 VXNlcm5hbWU6 334 UGFzc3dvcmQ6 535 5.7.139 Authentication unsuccessful, basic authentication is disabled. [AS4P251CA0014.EURP251.PROD.OUTLOOK.COM 2024-10-26T21:19:04.955Z 08DCF55F2D078725] , code: 535"
 ```
 
 This restores that functionality by presenting a compatible SMTP server to Gmail and using the Microsoft Graph `sendMail` endpoint to send the payload.
