@@ -1,4 +1,11 @@
-import { ArrowRight, AlertCircle, Server } from "lucide-react";
+import {
+  ArrowRight,
+  AlertCircle,
+  Server,
+  Github,
+  GithubIcon,
+  LucideGithub,
+} from "lucide-react";
 import { Header } from "./components/header";
 import { Footer } from "./components/footer";
 import Image from "next/image";
@@ -44,6 +51,17 @@ export default function Home() {
                 The Solution
               </h2>
               <p className="text-gray-600 leading-relaxed">
+                <a
+                  rel="noopener"
+                  className="inline-flex gap-1 items-center px-4 py-2 border border-transparent text-lg font-medium rounded-xl text-white bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-all duration-200 hover:scale-105"
+                  href="https://github.com/jasperchan/gmail-to-outlook-proxy"
+                  target="_blank"
+                >
+                  <Github fill="white" size={16} />
+                  Github
+                </a>
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-4">
                 This is a secure bridging service that enables Gmail to
                 communicate seamlessly with Microsoft's modern authentication
                 systems. It functions as an SMTP proxy that:
