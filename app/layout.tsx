@@ -16,6 +16,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Gmail to Outlook.com SMTP Proxy",
+  applicationName: "Gmail to Outlook.com SMTP Proxy",
+  description: `Restore Gmail's "Send mail as" functionality for your Outlook.com account.`,
 };
 
 export const viewport: Viewport = {

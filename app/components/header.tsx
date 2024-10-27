@@ -13,7 +13,8 @@ export function Header() {
         Gmail to Outlook.com SMTP Proxy
       </h1>
       <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-        Restore Gmail's "Send As" functionality for your Outlook.com account
+        Restore Gmail's "Send mail as" functionality for your Outlook.com
+        account
       </p>
     </div>
   );

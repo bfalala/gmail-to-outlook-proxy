@@ -2,7 +2,7 @@
 
 https://sendas.email/
 
-Microsoft has discontinued basic authentication for personal Outlook.com accounts. This change affects Gmail's "Send As" feature, which relies on basic SMTP authentication. Since Gmail hasn't updated their SMTP integration, users can no longer send emails through Outlook.com accounts via Gmail. Notably, attempts to connect to the Outlook.com SMTP server smtp-mail.outlook.com results in the following error:
+Microsoft has discontinued basic authentication for personal Outlook.com accounts. This change affects Gmail's "Send mail as" feature, which relies on basic SMTP authentication. Since Gmail hasn't updated their SMTP integration, users can no longer send emails through Outlook.com accounts via Gmail. Notably, attempts to connect to the Outlook.com SMTP server smtp-mail.outlook.com results in the following error:
 
 ```
 Authentication failed. Please check your username/password.

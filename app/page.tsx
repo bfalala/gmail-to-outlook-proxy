@@ -18,7 +18,7 @@ export default function Home() {
               </h2>
               <p className="text-gray-600 leading-relaxed">
                 Microsoft has discontinued basic authentication for personal
-                Outlook.com accounts. This change affects Gmail's "Send As"
+                Outlook.com accounts. This change affects Gmail's "Send mail as"
                 feature, which relies on basic SMTP authentication. Since Gmail
                 hasn't updated their SMTP integration, users can no longer send
                 emails through Outlook.com accounts via Gmail. Notably, attempts
