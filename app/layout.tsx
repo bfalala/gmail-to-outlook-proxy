@@ -21,8 +21,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: 640,
-  initialScale: 1,
+  initialScale: 0.5,
 };
 
 export default function RootLayout({
@@ -36,8 +35,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <GoogleAnalytics gaId="G-F7HYD7SP2S" />
       </body>
-      <GoogleAnalytics gaId="G-F7HYD7SP2S" />
     </html>
   );
 }
