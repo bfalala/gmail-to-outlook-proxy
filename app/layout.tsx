@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   title: "Gmail to Outlook.com SMTP Proxy",
 };
 
+export const viewport: Viewport = {
+  width: 640,
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,11 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=640, initial-scale=1.0" />
-      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-w-[640px]`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
