@@ -135,7 +135,7 @@ export default function Page() {
                     <label className="block text-sm font-medium text-gray-500 uppercase">
                       Server
                     </label>
-                    <div className="mt-1 text-lg font-mono">
+                    <div className="mt-1 text-lg font-mono text-black">
                       {config.smtpServer}
                     </div>
                   </div>
@@ -155,7 +155,7 @@ export default function Page() {
                     <label className="block text-sm font-medium text-gray-500 uppercase">
                       Port
                     </label>
-                    <div className="mt-1 text-lg font-mono">
+                    <div className="mt-1 text-lg font-mono text-black">
                       {config.smtpPort}
                     </div>
                   </div>
@@ -175,7 +175,9 @@ export default function Page() {
                     <label className="block text-sm font-medium text-gray-500 uppercase">
                       Username
                     </label>
-                    <div className="mt-1 text-lg font-mono">{config.email}</div>
+                    <div className="mt-1 text-lg font-mono text-black">
+                      {config.email}
+                    </div>
                   </div>
                   <button
                     onClick={() => copyToClipboard(config.email)}
@@ -193,7 +195,7 @@ export default function Page() {
                     <label className="block text-sm font-medium text-gray-500 uppercase">
                       Password
                     </label>
-                    <div className="mt-1 text-lg font-mono">
+                    <div className="mt-1 text-lg font-mono text-black">
                       {config.password}
                     </div>
                   </div>
@@ -224,7 +226,7 @@ export default function Page() {
                     <label className="block text-sm font-medium text-gray-500 uppercase">
                       Security
                     </label>
-                    <div className="mt-1 text-lg font-mono">
+                    <div className="mt-1 text-lg font-mono text-black">
                       {config.security}
                     </div>
                   </div>
