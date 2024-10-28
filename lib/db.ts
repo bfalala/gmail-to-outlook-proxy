@@ -1,10 +1,17 @@
 import sqlite3 from "sqlite3";
 import { Database, open } from "sqlite";
 import _ from "lodash";
+import { MicrosoftOAuthCredentials } from "./microsoft";
 
 export type Connection = Database;
 
 let db: Connection | undefined;
+
+export type User = {
+  email: string;
+  token: MicrosoftOAuthCredentials;
+  smtp_password: string;
+};
 
 export async function getDb() {
   if (!db) {
@@ -34,7 +41,7 @@ export async function endDb() {
   }
 }
 
-export async function getUser(email?: string) {
+export async function getUser(email?: string): Promise<User | undefined> {
   const db = await getDb();
   const result = await db.get<{
     email: string;

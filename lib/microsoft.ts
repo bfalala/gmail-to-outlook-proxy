@@ -11,7 +11,7 @@ const clientId = process.env.MICROSOFT_CLIENT_ID!;
 const clientSecret = process.env.MICROSOFT_CLIENT_SECRET!;
 const tenantId = "consumers";
 
-type MicrosoftOAuthCredentials = {
+export type MicrosoftOAuthCredentials = {
   token_type: string;
   scope: string;
   expires_in: number;
