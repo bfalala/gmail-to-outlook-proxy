@@ -3,8 +3,8 @@
     {
       "name": "sendas-smtp",
       "script": "build/smtp",
-      "instances": 1,
-      "exec_mode": "fork"
+      "instances": 2,
+      "exec_mode": "cluster"
     },
     {
       "name": "sendas-app",

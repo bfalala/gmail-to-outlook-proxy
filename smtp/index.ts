@@ -74,4 +74,14 @@ const server = new Server.SMTPServer({
   console.log(err);
 });
 
-server.listen(587);
+const port = 587;
+server.listen(port, () => {
+  console.log(`SMTP server listening on port ${port}`);
+  process.on("SIGINT", () => {
+    console.log("SMTP server shutting down");
+    server.close(() => {
+      console.log("SMTP server exiting");
+      process.exit(0);
+    });
+  });
+});
