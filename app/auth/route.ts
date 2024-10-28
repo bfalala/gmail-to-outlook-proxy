@@ -23,20 +23,28 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const session = await getIronSession<SessionData>(await cookies(), {
-    password: process.env.SESSION_SECRET!,
-    cookieName: process.env.SESSION_COOKIE!,
-  });
-  const body = qs.parse(await req.text()) as {
-    code: string;
-    state: string;
-  };
-  const { email } = await exchangeForCredentials(
-    getCallbackUrl(req),
-    body.code
-  );
-  session.email = email;
-  await session.save();
-  await onNewLogin(email);
-  return redirect("/configuration");
+  let success = false;
+  try {
+    const session = await getIronSession<SessionData>(await cookies(), {
+      password: process.env.SESSION_SECRET!,
+      cookieName: process.env.SESSION_COOKIE!,
+    });
+    const body = qs.parse(await req.text()) as {
+      code: string;
+      state: string;
+    };
+    const { email } = await exchangeForCredentials(
+      getCallbackUrl(req),
+      body.code
+    );
+    session.email = email;
+    await session.save();
+    await onNewLogin(email);
+    success = true;
+  } catch (err) {
+    // something went wrong
+  }
+  // it's crazy but for some reason redirects are treated as errors!
+  // https://nextjs.org/docs/app/building-your-application/routing/redirecting#redirects-in-nextconfigjs
+  return redirect(success ? "/configuration" : "/");
 }
