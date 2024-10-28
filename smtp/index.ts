@@ -1,7 +1,7 @@
 import "source-map-support/register.js";
 import "localenv";
 import Server from "smtp-server";
-import { getMicrosoftGraphClient } from "../lib/microsoft.js";
+import { getCredentials, getMicrosoftGraphClient } from "../lib/microsoft.js";
 import fs from "node:fs";
 import { getUser } from "../lib/db.js";
 
@@ -25,7 +25,8 @@ const server = new Server.SMTPServer({
       if (!user || user.smtp_password !== auth.password) {
         throw new Error("Invalid username or password.");
       }
-      callback(null, { user: JSON.stringify(user.token) });
+      const credentials = await getCredentials(user.email);
+      callback(null, { user: JSON.stringify(credentials) });
     } catch (err) {
       callback(new Error("Invalid username or password."));
     }
