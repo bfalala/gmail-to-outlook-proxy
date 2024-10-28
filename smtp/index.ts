@@ -52,6 +52,9 @@ const server = new Server.SMTPServer({
         }
       });
   },
+}).on("error", (err) => {
+  // prevent unhandled error from crashing the server
+  console.log(err);
 });
 
 server.listen(587);
