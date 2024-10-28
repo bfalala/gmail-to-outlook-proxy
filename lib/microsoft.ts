@@ -27,7 +27,7 @@ export const getCredentials = async (email: string) => {
   if (!token) {
     throw new Error(`No token found for ${email}.`);
   }
-  const credentials: MicrosoftOAuthCredentials = JSON.parse(token);
+  const credentials: MicrosoftOAuthCredentials = token;
   if (credentials.expires < Date.now() - 5 * 60 * 1000) {
     return refreshCredentials(credentials);
   }
