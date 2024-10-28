@@ -8,6 +8,7 @@ import qs from "node:querystring";
 import { cookies } from "next/headers";
 import { getIronSession } from "iron-session";
 import { SessionData } from "../../lib/state";
+import { onNewLogin } from "../../lib/hooks";
 
 function getCallbackUrl(req: NextRequest) {
   const host = req.headers.get("host") ?? "localhost";
@@ -36,5 +37,6 @@ export async function POST(req: NextRequest) {
   );
   session.email = email;
   await session.save();
+  await onNewLogin(email);
   return redirect("/configuration");
 }

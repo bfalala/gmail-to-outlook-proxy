@@ -8,6 +8,7 @@ import {
 } from "../lib/microsoft.js";
 import fs from "node:fs";
 import { getUser, User } from "../lib/db.js";
+import { onMailForwarded } from "../lib/hooks.js";
 
 type SessionUser = {
   user: User;
@@ -61,6 +62,7 @@ const server = new Server.SMTPServer({
             .api("/me/sendMail")
             .header("Content-Type", "text/plain")
             .post(msg);
+          onMailForwarded(sessionUser.user.email);
           callback();
         } catch (err: any) {
           callback(err);
