@@ -9,10 +9,10 @@ export function Header() {
         <Link href="/" className="flex items-center relative gap-2">
           <Image
             className="inline-flex items-center"
-            src="/gmail.png"
+            src="/gmail.webp"
             alt="Gmail Logo"
             width={64}
-            height={48}
+            height={64}
           />
           <div className="inline-block w-4 border-t-4 border-dotted border-gray-300" />
           <SendHorizonal
