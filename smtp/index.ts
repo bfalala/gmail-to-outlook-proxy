@@ -9,6 +9,8 @@ import {
 import fs from "node:fs";
 import { getUser, User } from "../lib/db.js";
 import { onMailForwarded } from "../lib/hooks.js";
+import { simpleParser } from "mailparser";
+import Cache from "node-cache";
 
 type SessionUser = {
   user: User;
@@ -22,6 +24,8 @@ const cert =
         cert: fs.readFileSync(process.env.SMTP_CERT_FILE),
       }
     : {};
+
+const cache = new Cache({ stdTTL: 60, checkperiod: 60 });
 
 const server = new Server.SMTPServer({
   authMethods: ["PLAIN", "LOGIN"],
@@ -56,6 +60,20 @@ const server = new Server.SMTPServer({
       .on("end", async () => {
         try {
           const msg = Buffer.concat(chunks).toString("base64");
+          // unfortunately, gmail seems to send the same message multiple times when sending to multiple recipients so we must dedupe
+          const email = await simpleParser(msg, {
+            skipHtmlToText: true,
+            skipImageLinks: true,
+            skipTextLinks: true,
+            skipTextToHtml: true,
+          });
+          const messageId = email.messageId;
+          if (messageId) {
+            if (cache.get(messageId)) {
+              return callback();
+            }
+            cache.set(messageId, true);
+          }
           const sessionUser = session.user as any as SessionUser;
           const client = getMicrosoftGraphClient(sessionUser.credentials);
           await client
@@ -79,6 +97,7 @@ server.listen(port, () => {
   console.log(`SMTP server listening on port ${port}`);
   process.on("SIGINT", () => {
     console.log("SMTP server shutting down");
+    cache.close();
     server.close(() => {
       console.log("SMTP server exiting");
       process.exit(0);
