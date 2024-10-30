@@ -62,7 +62,7 @@ const server = new Server.SMTPServer({
             .api("/me/sendMail")
             .header("Content-Type", "text/plain")
             .post(msg);
-          onMailForwarded(sessionUser.user.email);
+          onMailForwarded(sessionUser.user.email, msg);
           callback();
         } catch (err: any) {
           callback(err);
