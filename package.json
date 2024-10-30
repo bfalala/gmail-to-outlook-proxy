@@ -13,8 +13,7 @@
     "smtp:test": "node build/smtp/test.js",
     "build": "npm run app:build && npm run smtp:build",
     "start": "pm2 start pm2.json",
-    "reload": "pm2 reload pm2.json",
-    "deploy": "git push && ssh 306w 'bash -s' < deploy.sh"
+    "reload": "pm2 reload pm2.json"
   },
   "dependencies": {
     "@microsoft/microsoft-graph-client": "^3.0.7",
