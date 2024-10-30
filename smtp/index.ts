@@ -9,7 +9,6 @@ import {
 import fs from "node:fs";
 import { getUser, User } from "../lib/db.js";
 import { onMailForwarded } from "../lib/hooks.js";
-import { simpleParser } from "mailparser";
 import Cache from "node-cache";
 
 type SessionUser = {
@@ -59,15 +58,10 @@ const server = new Server.SMTPServer({
       .on("error", (err) => callback(err))
       .on("end", async () => {
         try {
-          const msg = Buffer.concat(chunks).toString("base64");
+          const raw = Buffer.concat(chunks);
+          const msg = raw.toString("base64");
           // unfortunately, gmail seems to send the same message multiple times when sending to multiple recipients so we must dedupe
-          const email = await simpleParser(msg, {
-            skipHtmlToText: true,
-            skipImageLinks: true,
-            skipTextLinks: true,
-            skipTextToHtml: true,
-          });
-          const messageId = email.messageId;
+          const messageId = raw.toString().match(/^Message-ID: (.*)$/im)?.[1];
           if (messageId) {
             if (cache.get(messageId)) {
               return callback();
