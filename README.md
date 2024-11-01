@@ -20,7 +20,19 @@ I've stood up https://sendas.email/ for myself, but all are welcome to use it if
 1. Have a domain name with valid SSL certificates (https://certbot.eff.org/) and update `SMTP_HOST`, `SMTP_KEY_FILE`, and `SMTP_CERT_FILE` in the `.env`.
 2. Register an app with Microsoft Graph (https://learn.microsoft.com/en-us/graph/auth/auth-concepts). This has only been tested on apps for **personal** accounts.
 3. Configure the app as a Web platform with valid redirect URIs `https://<HOST>/auth`.
-4. Generate a client secret for the app and update `MICROSOFT_CLIENT_ID` and `MICROSOFT_CLIENT_SECRET` in the `.env`.
+4. Generate a client secret for the app and update `MICROSOFT_APPS` in the `.env` (supports multiple app registrations). The default app for new users will be the first entry OR set `MICROSOFT_APPS_DEFAULT_ID` explicitly.
+   ```
+   [
+     {
+       "id": "APP_ID_1",
+       "secret": "APP_SECRET_1"
+     },
+     {
+       "id": "APP_ID_2",
+       "secret": "APP_SECRET_2"
+     }
+   ]
+   ```
 5. Generate your own `SESSION_SECRET` to manage session encryption.
 6. `docker-compose up`
 
