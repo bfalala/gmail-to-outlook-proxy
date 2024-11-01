@@ -11,6 +11,7 @@ export type User = {
   email: string;
   token: MicrosoftOAuthCredentials;
   smtp_password: string;
+  app_id: string;
 };
 
 export async function getDb() {
@@ -27,7 +28,8 @@ export async function getDb() {
         token TEXT NOT NULL,
         created_at TIMESTAMP DEFAULT (datetime('now')),
         updated_at TIMESTAMP DEFAULT (datetime('now')),
-        smtp_password TEXT NOT NULL
+        smtp_password TEXT NOT NULL,
+        app_id TEXT
       );
     `);
   }
@@ -47,12 +49,14 @@ export async function getUser(email?: string): Promise<User | undefined> {
     email: string;
     token: string;
     smtp_password: string;
+    app_id: string;
   }>(`SELECT * FROM Tokens WHERE email = ?`, email);
   return result
     ? {
         email: result.email,
         token: JSON.parse(result.token),
         smtp_password: result.smtp_password,
+        app_id: result.app_id,
       }
     : undefined;
 }

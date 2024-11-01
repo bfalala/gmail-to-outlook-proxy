@@ -2,6 +2,7 @@ import "source-map-support/register.js";
 import "localenv";
 import Server from "smtp-server";
 import {
+  getApp,
   getCredentials,
   getMicrosoftGraphClient,
   MicrosoftOAuthCredentials,
@@ -38,7 +39,11 @@ const server = new Server.SMTPServer({
       if (!user || user.smtp_password !== auth.password) {
         throw new Error("Invalid username or password.");
       }
-      const credentials = await getCredentials(user.email);
+      const credentials = await getCredentials(
+        user.email,
+        user.email,
+        getApp(user.app_id)
+      );
       callback(null, {
         user: {
           user,

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { redirect } from "next/navigation";
 import {
   exchangeForCredentials,
+  getApp,
   getAuthorizationUrl,
 } from "../../lib/microsoft";
 import qs from "node:querystring";
@@ -18,7 +19,7 @@ function getCallbackUrl(req: NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
-  const redirectUrl = getAuthorizationUrl(getCallbackUrl(req));
+  const redirectUrl = getAuthorizationUrl(getCallbackUrl(req), getApp());
   return NextResponse.redirect(redirectUrl);
 }
 
@@ -35,7 +36,8 @@ export async function POST(req: NextRequest) {
     };
     const { email } = await exchangeForCredentials(
       getCallbackUrl(req),
-      body.code
+      body.code,
+      getApp()
     );
     session.email = email;
     await session.save();
