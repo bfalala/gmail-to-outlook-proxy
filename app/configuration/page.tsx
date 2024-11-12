@@ -107,7 +107,15 @@ export default function Page() {
             <ArrowRight className="ml-3 h-5 w-5" />
           </a>
           <p className="mt-4 text-sm text-gray-500">
-            Secure authentication through Microsoft's official OAuth 2.0 flow
+            Secure authentication through Microsoft's official{" "}
+            <a
+              className="text-blue-500"
+              rel="noopener"
+              target="_blank"
+              href="https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow"
+            >
+              OAuth 2.0 flow
+            </a>
           </p>
         </div>
       </div>

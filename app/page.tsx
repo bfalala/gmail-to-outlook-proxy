@@ -19,12 +19,13 @@ export default function Home() {
               <p className="text-gray-600 leading-relaxed">
                 As of September 16, 2024, Microsoft has{" "}
                 <a
+                  className="text-blue-500"
                   rel="noopener"
                   target="_blank"
                   href="https://techcommunity.microsoft.com/blog/outlook/keeping-our-outlook-personal-email-users-safe-reinforcing-our-commitment-to-secu/4164184"
                 >
                   discontinued
-                </a>
+                </a>{" "}
                 basic authentication for personal Outlook.com accounts. This
                 change affects Gmail's "Send mail as" feature, which relies on
                 basic SMTP authentication. Since Gmail hasn't updated their SMTP
@@ -79,6 +80,7 @@ export default function Home() {
                 <li>
                   Forwards your emails through Microsoft's Graph API using their{" "}
                   <a
+                    className="text-blue-500"
                     rel="noopener"
                     target="_blank"
                     href="https://learn.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http#example-4-send-a-new-message-using-mime-format"
@@ -105,6 +107,7 @@ export default function Home() {
                 or logged and no access is granted to your contacts or inbox.
                 Revoke this limited permission at any time via{" "}
                 <a
+                  className="text-blue-500"
                   rel="noopener"
                   href="https://account.microsoft.com/privacy/app-access"
                   target="_blank"
@@ -133,8 +136,15 @@ export default function Home() {
                 <ArrowRight className="ml-3 h-5 w-5" />
               </a>
               <p className="mt-4 text-sm text-gray-500">
-                Secure authentication through Microsoft's official OAuth 2.0
-                flow
+                Secure authentication through Microsoft's official{" "}
+                <a
+                  className="text-blue-500"
+                  rel="noopener"
+                  target="_blank"
+                  href="https://learn.microsoft.com/en-us/entra/identity-platform/v2-oauth2-auth-code-flow"
+                >
+                  OAuth 2.0 flow
+                </a>
               </p>
             </div>
           </div>
