@@ -17,14 +17,21 @@ export default function Home() {
                 The Issue
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                Microsoft has discontinued basic authentication for personal
-                Outlook.com accounts. This change affects Gmail's "Send mail as"
-                feature, which relies on basic SMTP authentication. Since Gmail
-                hasn't updated their SMTP integration, users can no longer send
-                emails through Outlook.com accounts via Gmail. Notably, attempts
-                to connect to the Outlook.com SMTP server{" "}
-                <code>smtp-mail.outlook.com</code> results in the following
-                error:
+                As of September 16, 2024, Microsoft has{" "}
+                <a
+                  rel="noopener"
+                  target="_blank"
+                  href="https://techcommunity.microsoft.com/blog/outlook/keeping-our-outlook-personal-email-users-safe-reinforcing-our-commitment-to-secu/4164184"
+                >
+                  discontinued
+                </a>
+                basic authentication for personal Outlook.com accounts. This
+                change affects Gmail's "Send mail as" feature, which relies on
+                basic SMTP authentication. Since Gmail hasn't updated their SMTP
+                integration, users can no longer send emails through Outlook.com
+                accounts via Gmail. Notably, attempts to connect to the
+                Outlook.com SMTP server <code>smtp-mail.outlook.com</code>{" "}
+                results in the following error:
               </p>
               <p className="text-red-600 leading-relaxed">
                 <code>
@@ -86,7 +93,10 @@ export default function Home() {
                 HTTPS for Microsoft communications and TLS for Gmail
                 connections. This ensures your email content remains protected
                 and tamper-proof throughout transmission, while adhering to both
-                Gmail's and Microsoft's security protocols.
+                Gmail's and Microsoft's security protocols. This is provided as
+                a <strong>free</strong> service for personal use and the author
+                strongly encourages self-hosting if this functionality is
+                critical to you.
               </p>
               <p className="text-black bg-gray-200 p-4 mt-4">
                 The <strong>only</strong> permission this service requests is{" "}

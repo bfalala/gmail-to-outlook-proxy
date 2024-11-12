@@ -15,9 +15,12 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Gmail to Outlook.com SMTP Proxy",
+  title: `Configure "Send mail as" In Gmail For Personal Outlook.com Emails (After
+        September 16, 2024)`,
   applicationName: "Gmail to Outlook.com SMTP Proxy",
-  description: `Restore Gmail's "Send mail as" functionality for your Outlook.com account.`,
+  description: `An SMTP relay service to restore Gmail's "Send mail as" functionality
+        for your Outlook.com account after Microsoft's basic authentication
+        deprecation.`,
 };
 
 export const viewport: Viewport = {

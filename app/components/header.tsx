@@ -33,11 +33,13 @@ export function Header() {
         </Link>
       </div>
       <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl mb-6">
-        Gmail to Outlook.com SMTP Proxy
+        Configure "Send mail as" In Gmail For Personal Outlook.com Emails (After
+        September 16, 2024)
       </h1>
       <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-        Restore Gmail's "Send mail as" functionality for your Outlook.com
-        account
+        An SMTP relay service to restore Gmail's "Send mail as" functionality
+        for your Outlook.com account after Microsoft's basic authentication
+        deprecation.
       </p>
     </div>
   );
