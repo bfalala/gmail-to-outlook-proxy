@@ -59,6 +59,31 @@ Then update:
 - `SMTP_KEY_FILE`: `certificates/live/<YOUR_SMTP_HOST>/privkey.pem`
 - `SMTP_CERT_FILE`: `certificates/live/<YOUR_SMTP_HOST>/fullchain.pem`
 
+## Certificates (Cloudflare)
+
+Reference: https://certbot-dns-cloudflare.readthedocs.io/en/stable/
+
+```
+docker run --rm -v \
+  "$(pwd)/certificates:/etc/letsencrypt/" \
+  -v "<LOCAL_SECRET_FILE>:/root/.secrets/cloudflare.ini" \
+  certbot/dns-cloudflare \
+  certonly \
+  --non-interactive \
+  --agree-tos \
+  --key-type rsa \
+  --cert-name <YOUR_SMTP_HOST> \
+  --email <YOUR_EMAIL> \
+  --dns-cloudflare \
+  --dns-cloudflare-credentials /root/.secrets/cloudflare.ini \
+  -d <YOUR_SMTP_HOST>
+```
+
+Then update:
+
+- `SMTP_KEY_FILE`: `certificates/live/<YOUR_SMTP_HOST>/privkey.pem`
+- `SMTP_CERT_FILE`: `certificates/live/<YOUR_SMTP_HOST>/fullchain.pem`
+
 ## Usage
 
 Usage is pretty straightforward, visit the web app (http://localhost:3000 by default) and authenticate into your Outlook.com account. You'll then be presented with SMTP credentials to use with Gmail.
